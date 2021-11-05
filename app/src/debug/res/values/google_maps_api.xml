@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=9A:F5:33:B9:B5:AB:25:62:14:CA:AF:7A:54:69:CF:8F:92:F6:69:F4%3Bcom.groupname.tripmate
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.groupname.tripmate
+
+    SHA-1 certificate fingerprint:
+    9A:F5:33:B9:B5:AB:25:62:14:CA:AF:7A:54:69:CF:8F:92:F6:69:F4
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCXxWDCRIgCoseUhLDAKdsWv4mZyR-lFoA</string>
+</resources>

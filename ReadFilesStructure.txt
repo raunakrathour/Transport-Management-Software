@@ -1,0 +1,15 @@
+1. Activities: MainActvity,Schedule_Activity (startActivity from homeFragment of MainActivity) 
+
+2. Fragments:
+
+   Attached to MainActivity:- MyAccount_fragment ,homeFragment, SetAlarm_Fragment, Drivers_Fragment, ViewAnnouncement_Fragment
+   
+   Attached to Schedule_Activity:- busList_Frag,busDetail_Frag
+
+3. XMLs Details:
+
+   
+
+
+
+
