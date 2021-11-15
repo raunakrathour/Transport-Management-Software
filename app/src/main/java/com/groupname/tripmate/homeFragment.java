@@ -79,10 +79,11 @@ public class homeFragment extends Fragment {
                 AuthUI.getInstance().signOut(getApplicationContext());
             }
         });*/
+       main_activity_view_schedule.setText("Your Bookings");
         main_activity_view_schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), com.groupname.tripmate.Schedule_Activity.class));
+                //startActivity(new Intent(getActivity(), com.groupname.tripmate.Schedule_Activity.class));
             }
         });
 

@@ -10,6 +10,33 @@ public class bus {
     private String to;
     private Date updated;
     private String objectId;
+    private String driver;
+    private int available_seats;
+    private int isRunning;
+
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+
+    public int getAvailable_seats() {
+        return available_seats;
+    }
+
+    public void setAvailable_seats(int available_seats) {
+        this.available_seats = available_seats;
+    }
+
+    public int getIsRunning() {
+        return isRunning;
+    }
+
+    public void setIsRunning(int isRunning) {
+        this.isRunning = isRunning;
+    }
 
     public String getName() {
         return name;

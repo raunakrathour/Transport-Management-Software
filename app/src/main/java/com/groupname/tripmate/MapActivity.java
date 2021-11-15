@@ -311,8 +311,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private void getLocationUpdates(){
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        locationRequest.setInterval(5000);
-        locationRequest.setFastestInterval(2000);
+        locationRequest.setInterval(500);
+        locationRequest.setFastestInterval(200);
        /* HandlerThread handlerThread = new HandlerThread("MyHandlerThread");
         handlerThread.start();
         // Now get the Looper from the HandlerThread

@@ -27,7 +27,7 @@ public class Schedule_Activity extends AppCompatActivity implements busAdapter.I
     //text view
     //these are text views on busDetail_Frag
     TextView fragment_bus_detail_frag_tvBusName, fragment_bus_detail_frag_tvBusNumber, fragment_bus_detail_frag_tvTime1,
-            fragment_bus_detail_frag_tvFrom1, fragment_bus_detail_frag_tvTo1;
+            fragment_bus_detail_frag_tvFrom1, fragment_bus_detail_frag_tvTo1,tv1,tv2,tv3;
     ImageView bus_logo, ivDelete, ivAdd;
 
     busList_frag list;
@@ -50,6 +50,12 @@ public class Schedule_Activity extends AppCompatActivity implements busAdapter.I
         fragment_bus_detail_frag_tvTime1 = findViewById(R.id.fragment_bus_detail_frag_tvTime1);
         fragment_bus_detail_frag_tvFrom1 = findViewById(R.id.fragment_bus_detail_frag_tvFrom1);
         fragment_bus_detail_frag_tvTo1 = findViewById(R.id.fragment_bus_detail_frag_tvTo1);
+        tv1 = findViewById(R.id.tv_schedule_list_frag_display_seat_availabity);
+        tv2 = findViewById(R.id.tv_schedule_list_frag_driver);
+        tv3 = findViewById(R.id.tv_schedule_list_frag_status);
+        //tv2.setText("Driver - "+FirstClass.driverName);
+
+
 
         ivAdd.setVisibility(View.GONE);
         if(FirstClass.user.getProperty("isAdmin").equals("0")) {
@@ -100,6 +106,21 @@ public class Schedule_Activity extends AppCompatActivity implements busAdapter.I
         fragment_bus_detail_frag_tvTime1.setText(FirstClass.busses.get(index).getTime());
         fragment_bus_detail_frag_tvFrom1.setText(FirstClass.busses.get(index).getFrom());
         fragment_bus_detail_frag_tvTo1.setText(FirstClass.busses.get(index).getTo());
+        tv1.setText("Seats Available - "+FirstClass.busses.get(index).getAvailable_seats());
+        tv2.setText("Driver - "+FirstClass.busses.get(index).getDriver());
+        int isRunning = FirstClass.busses.get(index).getIsRunning();
+        if(isRunning==1)
+        {
+            tv3.setTextColor(getColor(R.color.green));
+            tv3.setText("Status - Running");
+
+        }
+        else
+        {
+            tv3.setTextColor(getColor(R.color.red));
+            tv3.setText("Status - Not Running");
+        }
+
 
         ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,6 +178,7 @@ public class Schedule_Activity extends AppCompatActivity implements busAdapter.I
                         Backendless.Persistence.save(booking, new AsyncCallback<Booking>() {
                             @Override
                             public void handleResponse(Booking response) {
+
                                 Toast.makeText(Schedule_Activity.this, "Booking added successfully", Toast.LENGTH_SHORT).show();
                                 Schedule_Activity.this.finish();
                             }

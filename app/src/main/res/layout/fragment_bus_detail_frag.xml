@@ -45,7 +45,7 @@
             <ImageView
                 android:id="@+id/bus_logo"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="156dp"
                 app:srcCompat="@drawable/ic_web_hi_res_512" />
 
             <TextView
@@ -59,8 +59,9 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:hint="Bus Name"
                 android:text="BUS NAME"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textColor="#FF7800"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/fragment_bus_detail_frag_tvBusNumber"
@@ -72,7 +73,37 @@
                 android:layout_marginBottom="5dp"
                 android:gravity="center_horizontal"
                 android:text="BUS NUMBER"
-                android:textColor="@color/white" />
+                android:textColor="#FF7800"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_schedule_list_frag_display_seat_availabity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="Seats Available "
+                android:textColor="@color/mycolor"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_schedule_list_frag_driver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="Driver"
+                android:textColor="@color/mycolor"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_schedule_list_frag_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Status "
+                android:textColor="@color/red" />
 
             <LinearLayout
                 android:layout_width="match_parent"

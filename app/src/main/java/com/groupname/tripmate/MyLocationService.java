@@ -113,8 +113,8 @@ public class MyLocationService extends Service {
     private void getLocationUpdates(){
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        locationRequest.setInterval(5000);
-        locationRequest.setFastestInterval(2000);
+        locationRequest.setInterval(500);
+        locationRequest.setFastestInterval(200);
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
         {
             stopForeground(true);
@@ -150,7 +150,7 @@ public class MyLocationService extends Service {
 
                         mp.put( "position", s );
                         mp.put("isRunning", 1);
-                        mp.put("driver",FirstClass.driverName);
+                        mp.put("driver",FirstClass.user.getProperty("name").toString());
                         mp.put("bearing",bearing);
                         Backendless.Data.of("bus").save(mp, new AsyncCallback<Map>() {
                             @Override
