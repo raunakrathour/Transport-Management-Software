@@ -37,7 +37,7 @@
         android:gravity="center_horizontal|center_vertical"
         android:text="View Schedule"
         android:textAllCaps="false"
-        android:textColor="#FF7800"
+        android:textColor="#da680f"
         android:textSize="24sp" />
 
     <Button
@@ -62,7 +62,7 @@
         android:background="@drawable/buton_select_2"
         android:text="Add Bus"
         android:textAllCaps="false"
-        android:textColor="#FF7800"
+        android:textColor="#da680f"
         android:textSize="24sp" />
 
     <Button
