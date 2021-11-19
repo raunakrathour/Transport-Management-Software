@@ -21,7 +21,7 @@ public class homeFragment extends Fragment {
 
     View view;
 
-    Button  main_activity_view_schedule,btnTrackLocation,main_activity_btn1,btnAdd,btnEmer;
+    Button  main_activity_view_bookings,btnTrackLocation,main_activity_btn1,btnAdd,btnEmer;
     TextView tvdriver;
 
 
@@ -43,9 +43,9 @@ public class homeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        main_activity_view_schedule = (Button) view.findViewById(R.id.main_activity_view_schedule);
+        main_activity_view_bookings = (Button) view.findViewById(R.id.main_activity_view_bookings);
         main_activity_btn1 = view.findViewById(R.id.main_activity_btn1);
-        main_activity_view_schedule.setOnTouchListener(new ButtonHighlighterOnTouchListener(main_activity_view_schedule));
+        main_activity_view_bookings.setOnTouchListener(new ButtonHighlighterOnTouchListener(main_activity_view_bookings));
 
         btnAdd = view.findViewById(R.id.btnSubmit);
         btnAdd.setOnTouchListener(new ButtonHighlighterOnTouchListener(btnAdd));
@@ -56,7 +56,7 @@ public class homeFragment extends Fragment {
             btnAdd.setVisibility(View.GONE);
         }
 
-       tvdriver = view.findViewById(R.id.tvdriver);
+        tvdriver = view.findViewById(R.id.tvdriver);
         btnEmer = view.findViewById(R.id.btnEmer);
 
         btnEmer.setOnClickListener(new View.OnClickListener() {
@@ -79,11 +79,11 @@ public class homeFragment extends Fragment {
                 AuthUI.getInstance().signOut(getApplicationContext());
             }
         });*/
-       main_activity_view_schedule.setText("Your Bookings");
-        main_activity_view_schedule.setOnClickListener(new View.OnClickListener() {
+        main_activity_view_bookings.setText("Your Bookings");
+        main_activity_view_bookings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(getActivity(), com.groupname.tripmate.Schedule_Activity.class));
+                startActivity(new Intent(getActivity(), com.groupname.tripmate.Booking_Activity.class));
             }
         });
 
