@@ -62,10 +62,8 @@ public class homeFragment extends Fragment {
         btnEmer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Calling Adimin", Toast.LENGTH_LONG).show();
 
-                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:6265502674"));
-                        startActivity(intent);
+                startActivity(new Intent(getActivity(),emergency_Activity.class));
 
 
 
@@ -83,7 +81,7 @@ public class homeFragment extends Fragment {
         main_activity_view_bookings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), com.groupname.tripmate.Booking_Activity.class));
+                startActivity(new Intent(getActivity(), com.groupname.tripmate.booking_Activity.class));
             }
         });
 

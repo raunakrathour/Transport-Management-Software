@@ -70,9 +70,9 @@ public class busList_frag extends Fragment {
         showProgress(true);
         tvLoad.setText("Fetching the schedule");
         DataQueryBuilder queryBuilder = DataQueryBuilder.create();
-        queryBuilder.addGroupBy("time");
+        queryBuilder.addSortBy("name");
 
-        Backendless.Persistence.of(bus.class).find(queryBuilder, new AsyncCallback<List<bus>>() {
+        Backendless.Data.of(bus.class).find(queryBuilder, new AsyncCallback<List<bus>>() {
             @Override
             public void handleResponse(List<bus> response) {
                 FirstClass.busses = (ArrayList<bus>) response;

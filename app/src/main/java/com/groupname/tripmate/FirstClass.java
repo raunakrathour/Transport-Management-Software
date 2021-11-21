@@ -25,6 +25,7 @@ public class FirstClass extends Application {
     public static String driverName;
     public static BackendlessUser user;
     public static ArrayList<bus> busses;
+    public static ArrayList<Booking> bookings;
 
     public static final String NOTIFICATION_CHANNEL_ID = "default-channel";
     public static int ISDRIVER=0;

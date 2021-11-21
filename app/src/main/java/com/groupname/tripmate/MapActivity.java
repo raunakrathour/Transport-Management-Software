@@ -122,7 +122,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
 
-                System.out.println("test7");
+               // System.out.println("test7");
 
 
 

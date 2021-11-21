@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".booking_Activity"></activity>
+        <activity android:name=".emergency_Activity" />
+        <activity android:name=".MapActivity" />
 
         <service
             android:name=".MyLocationService"

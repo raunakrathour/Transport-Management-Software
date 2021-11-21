@@ -54,7 +54,8 @@ public class busAdapter extends RecyclerView.Adapter<busAdapter.viewHolder>
     public void onBindViewHolder(@NonNull busAdapter.viewHolder holder, int position) {
         holder.itemView.setTag(buses.get(position));
         holder.tvBus_card_design1.setText(buses.get(position).getName());
-        holder.tvBus_card_design2.setText(buses.get(position).getNumber());
+        holder.tvBus_card_design2.setText(buses.get(position).getFrom()+" to "+buses.get(position).getTo());
+
 
 
 

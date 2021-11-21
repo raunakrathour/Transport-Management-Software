@@ -14,10 +14,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.media2.MediaLibraryService2;
 
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.DataQueryBuilder;
+
+import java.util.List;
+import java.util.Map;
 
 public class Schedule_Activity extends AppCompatActivity implements busAdapter.ItemClicked {
     private View mProgressView;
@@ -174,21 +179,77 @@ public class Schedule_Activity extends AppCompatActivity implements busAdapter.I
                         booking.setBookerName(FirstClass.user.getProperty("name").toString());
                         booking.setBusName(FirstClass.busses.get(index).getName());
                         booking.setTime(FirstClass.busses.get(index).getTime());
+                        booking.setBookerEmail(FirstClass.user.getEmail());
+                        booking.setFrom(FirstClass.busses.get(index).getFrom());
+                        booking.setTo(FirstClass.busses.get(index).getTo());
 
-                        Backendless.Persistence.save(booking, new AsyncCallback<Booking>() {
-                            @Override
-                            public void handleResponse(Booking response) {
+                        if (FirstClass.busses.get(index).getAvailable_seats() > 0) {
+                            Backendless.Data.save(booking, new AsyncCallback<Booking>() {
+                                @Override
+                                public void handleResponse(Booking response) {
 
-                                Toast.makeText(Schedule_Activity.this, "Booking added successfully", Toast.LENGTH_SHORT).show();
-                                Schedule_Activity.this.finish();
-                            }
+                                    DataQueryBuilder queryBuilder = DataQueryBuilder.create();
+                                    queryBuilder.setWhereClause("number = " + "'" + FirstClass.busses.get(index).getNumber() + "'");
 
-                            @Override
-                            public void handleFault(BackendlessFault fault) {
-                                Toast.makeText(Schedule_Activity.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                                    Backendless.Data.of("bus").find(queryBuilder,
+                                            new AsyncCallback<List<Map>>() {
+                                                @Override
+                                                public void handleResponse(List<Map> foundContacts) {
+                                                    // every loaded object from the "Contact" table is now an individual java.util.Map
+                                                    Map<String, Object> mp = foundContacts.get(0);
+                                                    int seatsAvailable = (int) mp.get("available_seats");
+                                                    seatsAvailable = seatsAvailable - 1;
+
+
+                                                    if (seatsAvailable >= 0) {
+                                                        mp.put("available_seats", seatsAvailable);
+                                                        Backendless.Data.of("bus").save(mp, new AsyncCallback<Map>() {
+                                                            @Override
+                                                            public void handleResponse(Map response) {
+                                                                // Contact objecthas been updated
+                                                                Toast.makeText(Schedule_Activity.this, "Booking added successfully", Toast.LENGTH_SHORT).show();
+                                                                Schedule_Activity.this.finish();
+                                                            }
+
+                                                            @Override
+                                                            public void handleFault(BackendlessFault fault) {
+                                                                // an error has occurred, the error code can be retrieved with fault.getCode()
+                                                                Toast.makeText(Schedule_Activity.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
+                                                            }
+
+                                                        });
+                                                    } else {
+                                                        Toast.makeText(Schedule_Activity.this, "No Seat Available", Toast.LENGTH_SHORT).show();
+                                                        Schedule_Activity.this.finish();
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void handleFault(BackendlessFault fault) {
+
+                                                    Toast.makeText(Schedule_Activity.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+
+
+                                            });
+
+
+                                }
+
+                                @Override
+                                public void handleFault(BackendlessFault fault) {
+                                    Toast.makeText(Schedule_Activity.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        else
+                        {
+                            Toast.makeText(Schedule_Activity.this, "No Seat Available", Toast.LENGTH_SHORT).show();
+                            showProgress(false);
+                            //Schedule_Activity.this.finish();
+                        }
                     }
+
                 });
                 dialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
